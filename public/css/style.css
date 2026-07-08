@@ -1,0 +1,596 @@
+/* =========================================
+   IMPORT FONT
+   Plus Jakarta Sans (body)
+   Lora (judul)
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;1,500&display=swap');
+
+/* =========================================
+   TOKENS
+========================================= */
+:root {
+    --brand:        #c0510a;
+    --brand-dark:   #9a3f07;
+    --brand-light:  #f5e6dc;
+    --bg:           #faf7f4;
+    --surface:      #ffffff;
+    --surface-2:    #f2ede8;
+    --text:         #1a1208;
+    --text-muted:   #7a6a5a;
+    --border:       #e8ddd4;
+    --shadow-sm:    0 2px 8px rgba(192,81,10,.08);
+    --shadow-md:    0 8px 24px rgba(192,81,10,.12);
+    --shadow-lg:    0 20px 48px rgba(192,81,10,.16);
+    --radius-sm:    10px;
+    --radius-md:    18px;
+    --radius-lg:    28px;
+    --radius-pill:  999px;
+    --transition:   0.25s cubic-bezier(.4,0,.2,1);
+}
+
+body.dark-mode {
+    --brand:        #e8753a;
+    --brand-dark:   #c0510a;
+    --brand-light:  #2a1a0e;
+    --bg:           #0f0b08;
+    --surface:      #1c1410;
+    --surface-2:    #241a12;
+    --text:         #f5ede4;
+    --text-muted:   #a08060;
+    --border:       #3a2a1a;
+    --shadow-sm:    0 2px 8px rgba(0,0,0,.3);
+    --shadow-md:    0 8px 24px rgba(0,0,0,.4);
+    --shadow-lg:    0 20px 48px rgba(0,0,0,.5);
+}
+
+/* =========================================
+   RESET & BASE
+========================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+body.dark-mode .navbar {
+    background: rgba(15,11,8,0.85);
+}
+
+.logo {
+    font-family: 'Lora', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-icon {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.btn-icon:hover {
+    background: var(--brand-light);
+    transform: scale(1.08);
+}
+
+.btn-primary {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 14px rgba(192,81,10,.35);
+}
+
+.btn-primary:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(192,81,10,.45);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* =========================================
+   HERO
+========================================= */
+.hero {
+    text-align: center;
+    padding: 5rem 20px 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(192,81,10,.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--brand);
+    margin-bottom: 14px;
+    line-height: 1.18;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.7;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 6px 6px 6px 20px;
+    box-shadow: var(--shadow-md);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-box:focus-within {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px rgba(192,81,10,.12), var(--shadow-md);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--text);
+    min-width: 0;
+}
+
+.search-box input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-box .btn-primary {
+    box-shadow: none;
+    padding: 9px 20px;
+    font-size: 0.88rem;
+}
+
+/* =========================================
+   KATEGORI
+========================================= */
+.categories {
+    padding: 0 5%;
+    margin-bottom: 10px;
+}
+
+.categories h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+.category-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-category {
+    background: var(--surface);
+    color: var(--brand);
+    border: 1.5px solid var(--border);
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-category:hover {
+    background: var(--brand-light);
+    border-color: var(--brand);
+    transform: translateY(-1px);
+}
+
+.btn-category.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+    box-shadow: 0 4px 12px rgba(192,81,10,.3);
+}
+
+/* =========================================
+   SORT BAR
+========================================= */
+.sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 5%;
+    flex-wrap: wrap;
+}
+
+.sort-bar label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.sort-select {
+    padding: 8px 36px 8px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c0510a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+}
+
+.sort-select:focus,
+.sort-select:hover {
+    border-color: var(--brand);
+}
+
+.filter-active-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brand-light);
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    padding: 5px 13px;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.filter-active-badge a {
+    color: var(--brand);
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+}
+
+.filter-active-badge a:hover { opacity: 1; }
+
+.sort-info {
+    margin-left: auto;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    margin-bottom: 24px;
+}
+
+.section-header h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.btn-add {
+    background: var(--brand);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 14px rgba(192,81,10,.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-add:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(192,81,10,.4);
+}
+
+/* =========================================
+   RECIPE GRID & CARDS
+========================================= */
+.recipe-container {
+    padding: 0 5% 5rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 22px;
+}
+
+.recipe-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.recipe-card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(192,81,10,.2);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 195px;
+    overflow: hidden;
+    position: relative;
+    background: var(--surface-2);
+}
+
+.img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,.18), transparent);
+    pointer-events: none;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+
+.recipe-card:hover .img-wrapper img {
+    transform: scale(1.07);
+}
+
+.card-content {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.category-label {
+    font-size: 0.72rem;
+    color: var(--brand);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.card-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin-top: 2px;
+}
+
+.rating {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* =========================================
+   DIVIDER ANTARA SECTION
+========================================= */
+.section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 5%;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 640px) {
+    .navbar { padding: 0.9rem 4%; }
+    .logo { font-size: 1.4rem; }
+    .hero { padding: 3.5rem 16px 2.5rem; }
+    .hero h1 { font-size: 2rem; }
+    .search-box { max-width: 100%; }
+    .categories, .sort-bar, .section-header, .recipe-container { padding-left: 4%; padding-right: 4%; }
+    .recipe-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .img-wrapper { height: 150px; }
+    .card-content { padding: 14px 14px 16px; }
+    .card-content h3 { font-size: 0.95rem; }
+    .sort-info { display: none; }
+}
+
+@media (max-width: 400px) {
+    .recipe-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* =========================================
+   NAVBAR LINKS (underline hyperlink style)
+========================================= */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--brand, #c0510a);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: rgba(192, 81, 10, 0.45);
+    letter-spacing: 0.01em;
+    transition: color 0.2s, text-decoration-color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #a04008;
+    text-decoration-color: #a04008;
+    text-decoration-thickness: 2px;
+}
+
+/* Halaman aktif — garis bawah lebih tebal */
+.nav-link.active {
+    text-decoration-thickness: 2.5px;
+    text-decoration-color: var(--brand, #c0510a);
+}
+
+/* Dark mode */
+body.dark-mode .nav-link {
+    color: #f1a06a;
+    text-decoration-color: rgba(241, 160, 106, 0.5);
+}
+body.dark-mode .nav-link:hover {
+    color: #ffc08a;
+    text-decoration-color: #ffc08a;
+}
+
+@media (max-width: 640px) {
+    .nav-links { gap: 12px; }
+    .nav-link  { font-size: 0.82rem; }
+}

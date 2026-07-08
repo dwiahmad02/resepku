@@ -1,0 +1,189 @@
+/* =========================================
+   RESET & BASE
+========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff8f4;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode { background: #121212; color: #f1f1f1; }
+
+/* =========================================
+   ALERT FLASH
+========================================= */
+.alert-success {
+    background: #d4edda; color: #155724; border: 1px solid #c3e6cb;
+    padding: 12px 20px; margin: 15px 30px; border-radius: 8px; font-weight: bold;
+}
+.alert-error {
+    background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;
+    padding: 12px 20px; margin: 15px 30px; border-radius: 8px;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+body.dark-mode .navbar { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+.logo { font-size: 1.8rem; font-weight: 800; color: #c0510a; text-decoration: none; }
+.nav-buttons { display: flex; gap: 15px; align-items: center; }
+
+.btn-icon {
+    background-color: white !important;
+    border: none; font-size: 18px; cursor: pointer;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #c0510a;
+    color: white; border: none;
+    padding: 8px 18px; border-radius: 20px;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.btn-primary:hover { background-color: #a04008; }
+
+/* =========================================
+   JUDUL SECTION
+========================================= */
+.judul-section { padding: 30px 30px 10px; }
+.judul-section h2 { font-size: 22px; margin: 0; }
+.judul-section hr { border: 2px solid orange; width: 50px; margin: 5px 0 0 0; }
+
+/* =========================================
+   FILTER KATEGORI
+========================================= */
+.filter-group { padding: 10px 30px; display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+
+.btn-filter {
+    text-decoration: none;
+    background-color: white; border: 2px solid orange;
+    color: orange; padding: 8px 18px; border-radius: 20px;
+    font-weight: bold; font-size: 14px; transition: 0.3s;
+}
+.btn-filter:hover, .btn-filter.active { background-color: orange; color: white; }
+
+/* =========================================
+   TABEL RESEP
+========================================= */
+.wrapper-tabel { padding: 20px 30px; }
+.tabel-resep { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+.tabel-resep th, .tabel-resep td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+.tabel-resep th { background: orange; color: white; }
+.foto-tabel { width: 80px; height: 60px; object-fit: cover; border-radius: 5px; }
+
+.badge-kategori {
+    background-color: #f0f0f0; padding: 4px 10px;
+    border-radius: 12px; font-size: 12px; color: #555; font-weight: bold;
+}
+
+/* =========================================
+   TOMBOL AKSI (DETAIL / EDIT / HAPUS)
+========================================= */
+.btn-detail, .btn-hapus, .btn-edit {
+    text-decoration: none; display: inline-block;
+    font-weight: bold; border-radius: 8px;
+    transition: 0.3s; font-size: 13px; margin: 3px; padding: 6px 14px;
+}
+.btn-detail { border: 2px solid orange; color: orange; background: white; }
+.btn-edit   { border: 2px solid #17a2b8; color: #17a2b8; background: white; }
+.btn-hapus  { border: 2px solid red; color: red; background: white; }
+.btn-detail:hover { background: orange; color: white; }
+.btn-edit:hover   { background: #17a2b8; color: white; }
+.btn-hapus:hover  { background: red; color: white; }
+
+/* =========================================
+   TOMBOL TAMBAH
+========================================= */
+.wrapper-tambah { padding: 10px 30px 30px; }
+.btn-tambah {
+    text-decoration: none; display: inline-block;
+    padding: 10px 22px; border: 2px solid orange;
+    color: orange; background: white; font-weight: bold;
+    border-radius: 8px; transition: 0.3s;
+}
+.btn-tambah:hover { background: orange; color: white; }
+
+/* =========================================
+   DARK MODE
+========================================= */
+body.dark-mode .tabel-resep   { background-color: #1e1e1e; color: white; }
+body.dark-mode .tabel-resep th { background-color: #333; color: orange; }
+body.dark-mode .tabel-resep td { border: 1px solid #333; }
+body.dark-mode .badge-kategori { background-color: #333; color: #bbb; }
+body.dark-mode .btn-filter,
+body.dark-mode .btn-detail,
+body.dark-mode .btn-edit,
+body.dark-mode .btn-hapus,
+body.dark-mode .btn-tambah  { background-color: #1e1e1e !important; }
+body.dark-mode .btn-icon    { background-color: white !important; color: #333 !important; }
+
+/* =========================================
+   NAVBAR LINKS (underline hyperlink style)
+========================================= */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: #c0510a;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: rgba(192, 81, 10, 0.45);
+    transition: color 0.2s, text-decoration-color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #a04008;
+    text-decoration-color: #a04008;
+    text-decoration-thickness: 2px;
+}
+
+.nav-link.active {
+    text-decoration-thickness: 2.5px;
+    text-decoration-color: #c0510a;
+}
+
+/* Dark mode */
+body.dark-mode .nav-link {
+    color: #f1a06a;
+    text-decoration-color: rgba(241, 160, 106, 0.5);
+}
+body.dark-mode .nav-link:hover {
+    color: #ffc08a;
+    text-decoration-color: #ffc08a;
+}
+
+/* Perbaiki btn-icon dark mode agar konsisten */
+body.dark-mode .btn-icon {
+    background-color: #333 !important;
+    color: #f1f1f1 !important;
+    border-color: #555;
+}
+
+@media (max-width: 640px) {
+    .nav-links { gap: 12px; }
+    .nav-link  { font-size: 0.82rem; }
+}

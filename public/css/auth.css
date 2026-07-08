@@ -1,0 +1,265 @@
+/* =============================================
+   auth.css — Halaman Login & Register
+   Resepku · Laravel
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fff7f0 0%, #fde8d8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ===== CARD ===== */
+.auth-card {
+    background: #ffffff;
+    padding: 2.2rem 2rem;
+    border-radius: 16px;
+    border: 1px solid #f0d9c8;
+    box-shadow: 0 12px 30px rgba(192, 81, 10, 0.08);
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ===== LOGO ===== */
+.auth-logo {
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+.auth-logo a {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #c0510a;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.auth-logo a:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+/* ===== HEADING ===== */
+h2 {
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 0.88rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== ALERT ===== */
+.alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.alert-error {
+    background: #fdf3f3;
+    color: #c62828;
+    border: 1px solid #f5c6c6;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    background: #fafafa;
+    color: #222;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #c0510a;
+    box-shadow: 0 0 0 3px rgba(192, 81, 10, 0.12);
+    background: #fff;
+}
+
+input.input-error {
+    border-color: #e53935;
+    background: #fff8f8;
+}
+
+/* ===== PASSWORD WRAPPER ===== */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 44px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: #c0510a;
+}
+
+/* ===== REMEMBER ME ===== */
+.form-options {
+    margin: 10px 0 14px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: #c0510a;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #c0510a;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.25s, transform 0.1s;
+}
+
+.btn-submit:hover {
+    background-color: #a04008;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 18px 0;
+    color: #ccc;
+    font-size: 0.82rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.divider span {
+    margin: 0 10px;
+}
+
+/* ===== GOOGLE BUTTON ===== */
+.google-btn {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    opacity: 0.7;
+    transition: background 0.2s;
+}
+
+.google-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== FOOTER TEXT ===== */
+.footer-text {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.88rem;
+    color: #888;
+}
+
+.footer-text a {
+    color: #c0510a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}

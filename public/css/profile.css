@@ -1,0 +1,315 @@
+/* =============================================
+   profile.css — Halaman Profil User
+   Resepku · Laravel
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --bg-body:      #f8f0eb;
+    --bg-card:      #ffffff;
+    --text-main:    #333333;
+    --text-muted:   #888888;
+    --border-color: #e8d8cc;
+    --card-shadow:  rgba(192, 81, 10, 0.08);
+    --accent:       #c0510a;
+    --accent-dark:  #a04008;
+}
+
+body.dark-mode {
+    --bg-body:      #121212;
+    --bg-card:      #1e1e1e;
+    --text-main:    #e0e0e0;
+    --text-muted:   #aaaaaa;
+    --border-color: #333333;
+    --card-shadow:  rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== PROFILE CARD ===== */
+.profile-card {
+    background: var(--bg-card);
+    width: 100%;
+    max-width: 460px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: background 0.3s, border-color 0.3s;
+    height: fit-content;
+}
+
+/* ===== HEADER ===== */
+header {
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s;
+}
+
+.brand-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#dark-mode-toggle {
+    background: transparent;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    transition: opacity 0.2s;
+    border-radius: 6px;
+}
+
+#dark-mode-toggle:hover {
+    opacity: 0.7;
+}
+
+.logout-btn {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--accent-dark);
+}
+
+/* ===== ALERT ===== */
+.alert-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    margin: 12px 22px 0;
+    border-radius: 8px;
+}
+
+.alert-error {
+    background: #fdf3f3;
+    color: #c62828;
+    border: 1px solid #f5c6c6;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    margin: 12px 22px 0;
+    border-radius: 8px;
+}
+
+/* ===== USER INFO ===== */
+.user-main-info {
+    padding: 22px 22px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid var(--border-color);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.info-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.email-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.join-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ===== DIVIDER ===== */
+.section-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 0;
+}
+
+/* ===== GANTI PASSWORD ===== */
+.account-actions {
+    padding: 18px 22px;
+}
+
+.password-dropdown {
+    font-size: 0.88rem;
+}
+
+.password-dropdown summary {
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    padding: 4px 0;
+    user-select: none;
+}
+
+.password-dropdown summary:hover {
+    opacity: 0.8;
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+    background: rgba(192, 81, 10, 0.03);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.password-form input {
+    padding: 10px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 7px;
+    font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-card);
+    color: var(--text-main);
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.password-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(192, 81, 10, 0.1);
+}
+
+.password-form input.input-error {
+    border-color: #e53935;
+}
+
+.field-error {
+    font-size: 0.78rem;
+    color: #e53935;
+    margin-top: -4px;
+}
+
+.btn-save-password {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+}
+
+.btn-save-password:hover {
+    background: var(--accent-dark);
+}
+
+/* ===== QUICK NAV ===== */
+.quick-nav {
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-main);
+    background: rgba(192, 81, 10, 0.04);
+    border: 1px solid transparent;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.nav-item:hover {
+    background: rgba(192, 81, 10, 0.1);
+    border-color: rgba(192, 81, 10, 0.2);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 16px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+}
+
+/* ===== ROLE BADGE ===== */
+.role-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 8px;
+    vertical-align: middle;
+    background: rgba(192, 81, 10, 0.12);
+    color: var(--accent);
+}
+.role-badge.user {
+    background: rgba(136, 136, 136, 0.15);
+    color: var(--text-muted);
+}

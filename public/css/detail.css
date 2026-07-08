@@ -1,0 +1,359 @@
+/* =========================================
+   HERO IMAGE
+========================================= */
+.detail-hero {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+    background: var(--surface-2);
+}
+
+.detail-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.detail-hero:hover .detail-hero-img {
+    transform: scale(1.03);
+}
+
+/* Gradient overlay dari bawah */
+.detail-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(15, 8, 2, 0.78) 0%,
+        rgba(15, 8, 2, 0.35) 45%,
+        transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.5rem 6%;
+}
+
+.detail-hero-overlay .category-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+    background: rgba(192, 81, 10, 0.55);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    width: fit-content;
+}
+
+.detail-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.detail-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 500;
+}
+
+.detail-hero-meta .meta-sep {
+    opacity: 0.4;
+}
+
+/* =========================================
+   ACTION BAR (like / share)
+========================================= */
+.detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 6%;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 65px; /* di bawah navbar */
+    z-index: 90;
+    flex-wrap: wrap;
+    transition: background var(--transition);
+}
+
+body.dark-mode .detail-actions {
+    background: var(--surface);
+}
+
+/* Like button */
+.btn-like {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    padding: 9px 18px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-like:hover,
+.btn-like.liked {
+    background: #fff0f3;
+    border-color: #e0446a;
+    color: #e0446a;
+}
+
+/* Share button */
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    padding: 9px 18px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-share:hover {
+    background: var(--brand-light);
+    border-color: var(--brand);
+    color: var(--brand);
+}
+
+/* =========================================
+   BACK LINK
+========================================= */
+.detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 24px 6% 0;
+    transition: color var(--transition);
+}
+
+.detail-back:hover {
+    color: var(--brand);
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+.detail-container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 28px 6% 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+.detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.detail-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(192, 81, 10, .15);
+}
+
+.detail-card h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.3px;
+}
+
+.detail-card .card-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    white-space: pre-line;
+}
+
+/* =========================================
+   GRID: bahan & langkah (2 kolom)
+========================================= */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* =========================================
+   SECTION KOMENTAR
+========================================= */
+
+/* Alert sukses */
+.detail-alert-success {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    color: #065f46;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 18px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+body.dark-mode .detail-alert-success {
+    background: rgba(6, 95, 70, 0.2);
+    border-color: rgba(110, 231, 183, 0.3);
+    color: #6ee7b7;
+}
+
+/* Form komentar */
+.comment-form-wrapper {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 22px;
+    margin-bottom: 28px;
+}
+
+.comment-form-wrapper input[type="text"],
+.comment-form-wrapper textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.comment-form-wrapper input[type="text"]::placeholder,
+.comment-form-wrapper textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.comment-form-wrapper input[type="text"]:focus,
+.comment-form-wrapper textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(192, 81, 10, .1);
+}
+
+.comment-form-wrapper textarea {
+    resize: vertical;
+    min-height: 88px;
+    line-height: 1.6;
+}
+
+.btn-kirim-komen {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 14px rgba(192, 81, 10, .3);
+}
+
+.btn-kirim-komen:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(192, 81, 10, .4);
+}
+
+.btn-kirim-komen:active {
+    transform: translateY(0);
+}
+
+/* Daftar komentar */
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.comment-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--brand);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 14px 18px;
+    transition: border-left-color var(--transition);
+}
+
+.comment-item:hover {
+    border-left-color: var(--brand-dark);
+}
+
+.comment-item .comment-author {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.comment-item .comment-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+/* Empty state komentar */
+.comment-empty {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.comment-empty .empty-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+}

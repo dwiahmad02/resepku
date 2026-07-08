@@ -1,0 +1,20 @@
+{
+  "folders": [
+	{
+		"path": "../../../../../Apalah Coba"
+	},
+	{
+		"path": "../../../SERVER"
+	},
+	{
+		"path": "../../../1"
+	},
+	{
+		"path": "../.."
+	}
+],
+  "settings": {
+    "java.debug.settings.onBuildFailureProceed": true,
+    "liveServer.settings.multiRootWorkspaceName": "resepku"
+  }
+}
