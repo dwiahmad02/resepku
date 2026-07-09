@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function showLogin()
     {
         if (Auth::guard('tbuser')->check()) return redirect('/');
-        return view('auth.login');
+        return view('login');
     }
 
     public function login(Request $request)
@@ -27,11 +27,7 @@ class AuthController extends Controller
 
         if (Auth::guard('tbuser')->attempt($credentials)) {
             $request->session()->regenerate();
-
-            $user    = Auth::guard('tbuser')->user();
-            $default = $user->role === 'admin' ? route('admin.dashboard') : '/';
-
-            return redirect()->intended($default);
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
@@ -43,7 +39,7 @@ class AuthController extends Controller
     public function showRegister()
     {
         if (Auth::guard('tbuser')->check()) return redirect('/');
-        return view('auth.register');
+        return view('register');
     }
 
     public function register(Request $request)
@@ -73,27 +69,93 @@ class AuthController extends Controller
         return redirect()->route('login')->with('status', 'Pendaftaran berhasil! Silakan login.');
     }
 
+    // ===================== LUPA PASSWORD (manual, tanpa email) =====================
+
+    // Form untuk memasukkan email
+    public function showForgotPassword()
+    {
+        if (Auth::guard('tbuser')->check()) return redirect('/');
+        return view('forgot-password');
+    }
+
+    // Cek apakah email terdaftar, lalu simpan sesi sementara untuk lanjut ke form reset
+    public function sendResetLink(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+        ]);
+
+        $user = TbUser::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'Email tidak terdaftar!',
+            ])->onlyInput('email');
+        }
+
+        // Simpan id user di session sebagai penanda "boleh reset password"
+        // (menggantikan token reset via email karena mode manual/lokal)
+        $request->session()->put('reset_user_id', $user->id);
+
+        return redirect()->route('password.reset');
+    }
+
+    // Form untuk memasukkan password baru
+    public function showResetPassword(Request $request)
+    {
+        if (!$request->session()->has('reset_user_id')) {
+            return redirect()->route('password.request')
+                ->withErrors(['email' => 'Silakan masukkan email Anda terlebih dahulu.']);
+        }
+
+        return view('reset-password');
+    }
+
+    // Proses simpan password baru
+    public function resetPassword(Request $request)
+    {
+        $userId = $request->session()->get('reset_user_id');
+
+        if (!$userId) {
+            return redirect()->route('password.request')
+                ->withErrors(['email' => 'Sesi reset password sudah berakhir, silakan ulangi.']);
+        }
+
+        $request->validate([
+            'password'          => ['required', 'min:6'],
+            'password_confirmation' => ['required', 'same:password'],
+        ], [
+            'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
+            'password.min'               => 'Password minimal 6 karakter!',
+        ]);
+
+        TbUser::where('id', $userId)->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Hapus sesi reset supaya tidak bisa dipakai ulang
+        $request->session()->forget('reset_user_id');
+
+        return redirect()->route('login')->with('success', 'Password berhasil direset! Silakan login.');
+    }
+
     // ===================== PROFILE =====================
     public function profile()
     {
         $user   = Auth::guard('tbuser')->user();
         $profil = DB::table('tb_profile')->where('id_user', $user->id)->first();
 
-        // Resep tersimpan -- diambil langsung dari resep_likes, sumber data yang
-        // sesungguhnya diisi oleh tombol like/bookmark di halaman detail resep.
-        $resep_tersimpan = DB::table('resep_likes as rl')
-            ->join('resep as r', 'rl.id_resep', '=', 'r.id_resep')
-            ->select(
-                'r.id_resep',
-                'r.nama_makanan as nama_masakan',
-                'r.gambar as foto',
-                'r.rating',
-                'r.nama_chef',
-                'rl.created_at'
-            )
-            ->where('rl.id_user', $user->id)
-            ->orderBy('rl.created_at', 'desc')
-            ->get();
+        // Resep tersimpan — ambil dari tabel resep berdasarkan id yang ada di tb_profile
+        $resep_tersimpan = collect();
+        if ($profil && !empty($profil->resep_tersimpan)) {
+            $ids = array_filter(explode(',', $profil->resep_tersimpan));
+            if (!empty($ids)) {
+                $resep_tersimpan = DB::table('resep')
+                    ->whereIn('id_resep', $ids)
+                    ->select('id_resep', 'nama_masakan', 'foto', 'rating', 'nama_chef')
+                    ->get();
+            }
+        }
 
         return view('auth.profile', compact('user', 'profil', 'resep_tersimpan'));
     }
