@@ -167,7 +167,6 @@
                 <h4>Web Development</h4>
                 <a>Dosen Pengampu: DEWI SETIOWATI , A.Md., S.Pd., M.Tr.Kom.</a>
                 <a>Kelas         : KH001</a>
-                <a>Kelas         : KH001</a>
             </div>
         </div>
 
