@@ -13,11 +13,10 @@ class HomeController extends Controller
         $id_filter_kategori = $request->input('kategori', '');
         $sort                = $request->input('sort', 'terbaru');
 
-        // Pakai nama kolom asli tabel `resep` + join ke `kategori` buat ambil nama_kategori.
-        // Chef diambil langsung dari kolom nama_chef, bukan relasi user (resep tidak punya id_user).
         $query = DB::table('resep as r')
             ->leftJoin('kategori as k', 'r.id_kategori', '=', 'k.id_kategori')
-            ->select('r.*', 'k.nama_kategori');
+            ->leftJoin('tb_user as u', 'r.user_id', '=', 'u.id')
+            ->select('r.*', 'k.nama_kategori', DB::raw('COALESCE(u.username, r.nama_chef, "Guest") as nama_chef'));
 
         if (!empty($kata_kunci)) {
             $query->where('r.nama_makanan', 'like', '%' . $kata_kunci . '%');

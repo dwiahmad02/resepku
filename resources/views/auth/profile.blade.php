@@ -355,8 +355,8 @@
                             </div>
                             <div class="resep-card-sm-info">
                                 <strong>{{ $resep->nama_masakan }}</strong>
-                                <p>👨‍🍳 {{ $resep->nama_chef }}</p>
-                                <p>⭐ {{ number_format($resep->rating, 1) }}</p>
+                                <p> {{ $resep->nama_chef }}</p>
+                                <p> {{ number_format($resep->rating, 1) }}</p>
                             </div>
                         </a>
                     @endforeach
