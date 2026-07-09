@@ -1,0 +1,11 @@
+[33mcommit 7e6883894e05e2f95f90a7d28b5853ad76a17f02[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 240071e a1548da
+Author: Dwi_Ahmad <dwiahmad641@gmail.com>
+Date:   Thu Jul 9 07:51:59 2026 +0700
+
+    Merge branch 'main' of https://github.com/dwiahmad02/resepku
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
