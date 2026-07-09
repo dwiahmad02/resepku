@@ -17,6 +17,12 @@
             <h2 style="color: #F5DEB3;">Login</h2>
             <p class="subtitle">Selamat datang kembali di Resepku</p>
 
+            @if (session('success'))
+                <div style="color: #155724; background-color: #d4edda; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.9rem;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             @if ($errors->any())
                 <div style="color: #d9534f; background-color: #fdf7f7; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.9rem;">
                     {{ $errors->first() }}
@@ -44,7 +50,7 @@
             </div>
 
             <div class="form-options">
-                <a href="#">Lupa password?</a>
+                <a href="{{ route('password.request') }}">Lupa password?</a>
             </div>
 
             <button type="submit">Masuk</button>

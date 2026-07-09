@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
 
 // ============================================================
 // LANDING PAGE
@@ -19,6 +18,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/login',    [AuthController::class, 'login'])->name('login.post');
     Route::get('/register',  [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+
+    // Lupa password (manual, tanpa email — untuk pengembangan/lokal)
+    Route::get('/forgot-password',  [AuthController::class, 'showForgotPassword'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/reset-password',   [AuthController::class, 'showResetPassword'])->name('password.reset');
+    Route::post('/reset-password',  [AuthController::class, 'resetPassword'])->name('password.update');
 });
 
 // ============================================================
@@ -32,35 +37,16 @@ Route::middleware('auth:tbuser')->group(function () {
 });
 
 // ============================================================
-// DASHBOARD RESEP (CRUD) — butuh login, kelola resep sendiri
+// DASHBOARD RESEP (CRUD)
 // ============================================================
-Route::middleware('auth:tbuser')->group(function () {
-    Route::get('/dashboard',            [ResepController::class, 'dashboard'])->name('resep.dashboard');
-    Route::get('/tambah-resep',         [ResepController::class, 'tambah'])->name('resep.tambah');
-    Route::post('/simpan-resep',        [ResepController::class, 'simpan'])->name('resep.simpan');
-    Route::get('/resep/{id}',           [ResepController::class, 'detail'])->name('resep.detail');
-    Route::get('/resep/{id}/edit',      [ResepController::class, 'edit'])->name('resep.edit');
-    Route::post('/resep/{id}/update',   [ResepController::class, 'update'])->name('resep.update');
-    Route::get('/resep/{id}/hapus',     [ResepController::class, 'hapus'])->name('resep.hapus');
+Route::get('/dashboard',            [ResepController::class, 'dashboard'])->name('resep.dashboard');
+Route::get('/tambah-resep',         [ResepController::class, 'tambah'])->name('resep.tambah');
+Route::post('/simpan-resep',        [ResepController::class, 'simpan'])->name('resep.simpan');
+Route::get('/resep/{id}',           [ResepController::class, 'detail'])->name('resep.detail');
+Route::get('/resep/{id}/edit',      [ResepController::class, 'edit'])->name('resep.edit');
+Route::post('/resep/{id}/update',   [ResepController::class, 'update'])->name('resep.update');
+Route::get('/resep/{id}/hapus',     [ResepController::class, 'hapus'])->name('resep.hapus');
 
-    // AJAX Endpoints
-    Route::post('/simpan-komentar',     [ResepController::class, 'simpanKomentar'])->name('resep.komentar');
-    Route::post('/toggle-like',         [ResepController::class, 'toggleLike'])->name('resep.like');
-});
-
-// ============================================================
-// DASHBOARD ADMIN — butuh login + role admin
-// ============================================================
-Route::middleware(['auth:tbuser', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard',             [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/resep/{id}/hapus',      [AdminController::class, 'resepHapus'])->name('resep.hapus');
-
-    Route::get('/kategori',              [AdminController::class, 'kategoriIndex'])->name('kategori.index');
-    Route::post('/kategori',             [AdminController::class, 'kategoriStore'])->name('kategori.store');
-    Route::post('/kategori/{id}/update', [AdminController::class, 'kategoriUpdate'])->name('kategori.update');
-    Route::get('/kategori/{id}/hapus',   [AdminController::class, 'kategoriHapus'])->name('kategori.hapus');
-
-    Route::get('/users',                 [AdminController::class, 'userIndex'])->name('users.index');
-    Route::post('/users/{id}/role',      [AdminController::class, 'userUpdateRole'])->name('users.role');
-    Route::get('/users/{id}/hapus',      [AdminController::class, 'userHapus'])->name('users.hapus');
-});
+// AJAX Endpoints
+Route::post('/simpan-komentar',     [ResepController::class, 'simpanKomentar'])->name('resep.komentar');
+Route::post('/toggle-like',         [ResepController::class, 'toggleLike'])->name('resep.like');
