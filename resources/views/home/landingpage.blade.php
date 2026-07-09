@@ -147,7 +147,34 @@
             </div>
             @endforelse
         </div>
-    </section>
+
+    {{-- ===== FOOTER ===== --}}
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">Resepku</span>
+                <p>Jutaan resep dari nusantara, mudah dicari dan mudah dipilih.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Dibuat Oleh</h4>
+                <a>Dwi Ahmad Maulana         - 20240801118</a>
+                <a>Lucas Gabriel Mahatan     - 20240801012</a>
+                <a>Stefanus Sapta Dwi Lianto - 20240801196</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Web Development</h4>
+                <a>Dosen Pengampu: DEWI SETIOWATI , A.Md., S.Pd., M.Tr.Kom.</a>
+                <a>Kelas         : KH001</a>
+                <a>Kelas         : KH001</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p> Tahun Akademik 2025/2026</p>
+        </div>
+    </footer>
 
 </body>
 
