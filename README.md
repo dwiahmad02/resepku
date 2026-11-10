@@ -58,4 +58,4 @@ Soal email: secara default `MAIL_MAILER=log`, jadi email tidak benar-benar terki
 
 ## Pembuat
 
-Dwi Ahmad
+Dwi Ahmad Maulana, Lucas Gabriel Mahatan, Stefanus Sapta Dwi Lianto
