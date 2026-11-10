@@ -58,6 +58,6 @@ Soal email: secara default `MAIL_MAILER=log`, jadi email tidak benar-benar terki
 
 ## Pembuat
 
-Dwi Ahmad Maulana (https://github.com/dwiahmad02)
-Lucas Gabriel Mahatan (https://github.com/LucasssssPakeC)
-Stefanus Sapta Dwi Lianto (https://github.com/stefanuslianto19)
+- Dwi Ahmad Maulana (https://github.com/dwiahmad02)
+- Lucas Gabriel Mahatan (https://github.com/LucasssssPakeC)
+- Stefanus Sapta Dwi Lianto (https://github.com/stefanuslianto19)
